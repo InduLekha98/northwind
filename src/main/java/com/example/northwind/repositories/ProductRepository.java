@@ -3,15 +3,21 @@ package com.example.northwind.repositories;
 import com.example.northwind.entities.ProductsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.parameters.P;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductsEntity,Integer> {
+public interface ProductRepository extends CrudRepository<ProductsEntity, Integer> {
     ProductsEntity findAllById(int id);
     List<ProductsEntity> findAll();
+    ProductsEntity save(ProductsEntity productsEntity);
+
+    void DeleteById(int id);
+
 }
+
 
 
 //
