@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductsService {
-    @Autowired
     private final ProductRepository productRepository;
 
     public ProductsEntity getById(int id){
@@ -34,7 +33,7 @@ public class ProductsService {
 
     }
     public void delete(int id){
-        productRepository.DeleteById(id);
+        productRepository.deleteById(id);
     }
 
     public ProductsEntity update(ProductsEntity productsEntity, int id) {
@@ -46,14 +45,14 @@ public class ProductsService {
         //productsEntity.getProduct_name // key_board
 
         product.setProductName(productsEntity.getProductName());
-        product.setDiscontinued(productsEntity.getDiscontinued());
+        product.setDiscontinued(productsEntity.isDiscontinued());
         product.setCategoryId(productsEntity.getCategoryId());
         product.setQuantityPerUnit(productsEntity.getQuantityPerUnit());
-        product.setRecordLevel(productsEntity.getRecordLevel());
+        product.setReorderLevel(productsEntity.getReorderLevel());
         product.setSupplierId(productsEntity.getSupplierId());
-        product.setUnitInStock(productsEntity.getUnitInStock());
+        product.setUnitsInStock(productsEntity.getUnitsInStock());
         product.setUnitPrice(productsEntity.getUnitPrice());
-        product.setUnitsInOrder(productsEntity.getUnitsInOrder());
+        product.setUnitsOnOrder(productsEntity.getUnitsOnOrder());
 
         return productRepository.save(product);
 

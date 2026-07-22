@@ -1,26 +1,40 @@
 package com.example.northwind.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 @Entity
 @Table(name = "products")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int productId;
+    @Column(name="product_id")
+    private int id;
     @NotNull
     @Column(nullable = false)
-    public String productName;
+    private String productName;
     private int supplierId;
-    public int categoryId;
-    public String quantityPerUnit;
-    public float unitPrice;
-    private int unitInStock;
-    private int unitsInOrder;
-    public int recordLevel;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_Id")
+    private Category category;
+    private String quantityPerUnit;
+    private float unitPrice;
+    private int unitsInStock;
+    private int unitsOnOrder;
+    private int reorderLevel;
     @Column(nullable = false)
-    public int discontinued;
+    private boolean discontinued = false;
+
+    @OneToMany(mappedBy = "products")
+    private List<OrderDetail> orderDetails;
+
+
 }

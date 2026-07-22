@@ -14,7 +14,7 @@ public interface ProductRepository extends CrudRepository<ProductsEntity, Intege
     List<ProductsEntity> findAll();
     ProductsEntity save(ProductsEntity productsEntity);
 
-    void DeleteById(int id);
+    void deleteById(int id);
 
 }
 
