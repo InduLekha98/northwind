@@ -23,12 +23,13 @@ public class OrderEntity {
     @Column(name = "order_id")
     private int orderId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private CustomersEntity customer;
 
-    @Column(name = "customer_id")
-    private String customerId;
-
-    @Column(name = "employee_id")
-    private int employee;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    private Employees employee;
 
     @Column(name = "order_date")
     private LocalDate orderDate;
@@ -39,9 +40,9 @@ public class OrderEntity {
     @Column(name = "shipped_date")
     private LocalDate shippedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ship_via")
-    private int shipper;
+    private Shippers shipper;
 
     @Column(name = "freight")
     private float freight;

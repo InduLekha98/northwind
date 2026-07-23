@@ -36,5 +36,8 @@ public class ProductsEntity {
     @OneToMany(mappedBy = "products")
     private List<OrderDetail> orderDetails;
 
+    @OneToMany(mappedBy = "products")
+    private  List<Suppliers> suppliers;
+
 
 }
