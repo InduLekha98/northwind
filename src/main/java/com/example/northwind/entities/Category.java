@@ -17,14 +17,15 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "category_id")
+    private Long categoryId;
 
     @Column(name = "category_name", nullable = false, unique = true)
     private String name;
 
     private String description;
 
-    private byte picture;
+    private byte[] picture;
 
     @OneToMany(mappedBy = "category")
     private List<ProductsEntity> productsEntities;

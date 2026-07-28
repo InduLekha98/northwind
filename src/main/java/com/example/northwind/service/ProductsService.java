@@ -46,7 +46,7 @@ public class ProductsService {
         //productsEntity.getProduct_name // key_board
 
         product.setProductName(productsEntity.getProductName());
-        product.setDiscontinued(productsEntity.isDiscontinued());
+        product.setDiscontinued(productsEntity.getDiscontinued());
         product.setCategory(productsEntity.getCategory());
         product.setQuantityPerUnit(productsEntity.getQuantityPerUnit());
         product.setReorderLevel(productsEntity.getReorderLevel());

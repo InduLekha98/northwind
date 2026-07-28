@@ -17,7 +17,7 @@ public class ProductsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_id")
-    private int id;
+    private Integer id;
     @NotNull
     @Column(nullable = false)
     private String productName;
@@ -25,15 +25,15 @@ public class ProductsEntity {
     @JoinColumn(name = "supplier_id")
     private Suppliers supplier;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_Id")
+    @JoinColumn(name = "category_id")
     private Category category;
     private String quantityPerUnit;
-    private float unitPrice;
-    private int unitsInStock;
-    private int unitsOnOrder;
-    private int reorderLevel;
+    private Float unitPrice;
+    private Integer unitsInStock;
+    private Integer unitsOnOrder;
+    private Integer reorderLevel;
     @Column(nullable = false)
-    private boolean discontinued = false;
+    private Integer discontinued = 0;
 
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;

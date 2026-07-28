@@ -14,14 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class Suppliers {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-
-    @Column(nullable = false)
-    public String supplierId;
+    @Column(name = "supplier_id")
+    public int supplierId;
 
     @Column(nullable = false)
     public String companyName;
@@ -36,7 +34,7 @@ public class Suppliers {
 
     public String region;
 
-    public  int postalCode;
+    public String postalCode;
 
     public String country;
 
