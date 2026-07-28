@@ -57,6 +57,4 @@ public class CustomersEntity {
     @OneToMany(mappedBy = "customer")
     private  List<CustomerCustomerDemo> customerCustomerDemos;
 
-    @OneToMany(mappedBy = "customerDemographic")
-    private List<CustomerDemographics> demographics;
 }

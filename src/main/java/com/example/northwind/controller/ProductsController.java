@@ -1,5 +1,6 @@
 package com.example.northwind.controller;
 
+import com.example.northwind.dto.ProductsDto;
 import com.example.northwind.entities.ProductsEntity;
 import com.example.northwind.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,10 @@ public class ProductsController {
     public ProductsEntity updateProduct(@PathVariable int id, @RequestBody ProductsEntity productsEntity){
 
         return productsService.update(productsEntity, id);
+    }
+    @PatchMapping("/{id}")
+    public ProductsEntity partialUpdate(@PathVariable int id, @RequestBody ProductsDto productsDto){
+         return productsService.patchProducts(productsDto, id);
     }
 
 }

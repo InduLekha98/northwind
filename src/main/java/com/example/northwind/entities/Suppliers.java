@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "suppliers")
 @AllArgsConstructor
@@ -43,4 +45,7 @@ public class Suppliers {
     public String fax;
 
     public  String homepage;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<ProductsEntity> products;
 }

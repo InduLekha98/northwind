@@ -1,6 +1,7 @@
 package com.example.northwind.service;
 
 
+import com.example.northwind.dto.ProductsDto;
 import com.example.northwind.entities.ProductsEntity;
 import com.example.northwind.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,18 +47,22 @@ public class ProductsService {
 
         product.setProductName(productsEntity.getProductName());
         product.setDiscontinued(productsEntity.isDiscontinued());
-        product.setCategoryId(productsEntity.getCategoryId());
+        product.setCategory(productsEntity.getCategory());
         product.setQuantityPerUnit(productsEntity.getQuantityPerUnit());
         product.setReorderLevel(productsEntity.getReorderLevel());
-        product.setSupplierId(productsEntity.getSupplierId());
+        product.setSupplier(productsEntity.getSupplier());
         product.setUnitsInStock(productsEntity.getUnitsInStock());
         product.setUnitPrice(productsEntity.getUnitPrice());
         product.setUnitsOnOrder(productsEntity.getUnitsOnOrder());
 
         return productRepository.save(product);
-
-
     }
+    public ProductsEntity patchProducts(ProductsDto partialProduct, int id){
+       ProductsEntity oldProduct = productRepository.findAllById(id);
+       oldProduct.setProductName(partialProduct.getProductName());
+       return productRepository.save(oldProduct);
+    }
+
 
 
  }

@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customer_demographics")
-
 public class CustomerDemographics {
     @Id
     @Column(name = "customer_type_id", nullable = false)
@@ -20,7 +21,8 @@ public class CustomerDemographics {
     @Column(name = "customer_desc")
     public String customerDesc;
 
-
+    @OneToMany(mappedBy = "customerDemographic")
+    private List<CustomerCustomerDemo> demographics;
 }
 
 

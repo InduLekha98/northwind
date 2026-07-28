@@ -21,7 +21,9 @@ public class ProductsEntity {
     @NotNull
     @Column(nullable = false)
     private String productName;
-    private int supplierId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id")
+    private Suppliers supplier;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_Id")
     private Category category;
@@ -33,11 +35,10 @@ public class ProductsEntity {
     @Column(nullable = false)
     private boolean discontinued = false;
 
-    @OneToMany(mappedBy = "products")
+    @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
 
-    @OneToMany(mappedBy = "products")
-    private  List<Suppliers> suppliers;
+
 
 
 }

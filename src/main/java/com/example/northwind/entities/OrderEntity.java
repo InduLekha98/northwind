@@ -65,7 +65,7 @@ public class OrderEntity {
     @Column(name = "ship_country")
     private String shipCountry;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
     // Getters and setters omitted for brevity
 }

@@ -24,5 +24,5 @@ public class CustomerCustomerDemo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_type_id")
-    public  CustomerDemographics customerDemographic;
+    public CustomerDemographics customerDemographic;
 }

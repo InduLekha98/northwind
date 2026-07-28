@@ -71,14 +71,15 @@ public class Employees {
     @Column(name = "notes")
     private String notes;
 
-
-    @Column(name = "reports_to")
+    @ManyToOne
+    @JoinColumn(name = "reports_to")
     private Employees reportsTo;
+
 
     @Column(name = "photo_path", length = 255)
     private String photoPath;
 
-    @OneToMany(mappedBy = "employees")
+    @OneToMany(mappedBy = "employee")
     private Set<OrderEntity> orders;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
